@@ -1,0 +1,101 @@
+# GitHub 配置文件
+# 用于配置仓库的各种自动化功能
+
+# 自动关闭不活跃的 Issues 和 Pull Requests
+close_stale_issues:
+  # 是否启用
+  enabled: true
+  # 多少天后标记为不活跃
+  days_until_stale: 60
+  # 多少天后关闭不活跃的 Issue
+  days_until_close: 7
+  # 不活跃 Issue 的标记
+  stale_label: "status: stale"
+  # 排除的标签
+  exempt_labels:
+    - "pinned"
+    - "security"
+    - "discussion"
+  # 标记不活跃时的评论
+  mark_comment: >
+    This issue has been automatically marked as stale because it has not had
+    recent activity. It will be closed if no further activity occurs. Thank you
+    for your contributions.
+  # 关闭 Issue 时的评论
+  close_comment: >
+    This issue has been automatically closed due to inactivity.
+    Please feel free to reopen if you feel it's still relevant.
+
+# 自动分配 Reviewers
+request_review:
+  # 是否启用
+  enabled: true
+  # 默认 Reviewers
+  reviewers:
+    - owner
+  # 最大 Reviewers 数量
+  number_of_reviewers: 2
+
+# 自动标签功能
+auto_label:
+  # 是否启用
+  enabled: true
+  # 基于文件路径的标签规则
+  rules:
+    - pattern: "docs/**/*"
+      labels: ["documentation"]
+    - pattern: "tests/**/*"
+      labels: ["test", "quality"]
+    - pattern: "src/**/*.js"
+      labels: ["javascript", "frontend"]
+    - pattern: "src/**/*.py"
+      labels: ["python", "backend"]
+
+# 贡献者欢迎信息
+welcome:
+  # 新贡献者欢迎信息
+  new_contributor_greeting: |
+    Welcome to our project! 🎉
+    
+    Thank you for your first contribution. We're excited to have you here!
+    
+    Please make sure to:
+    - Read our [Contributing Guidelines](CONTRIBUTING.md)
+    - Follow our [Code of Conduct](CODE_OF_CONDUCT.md)
+    - Check existing issues before creating new ones
+    
+    If you have any questions, feel free to ask!
+
+# 自动合并配置
+auto_merge:
+  # 是否启用
+  enabled: true
+  # 合并方法 (merge, squash, rebase)
+  method: squash
+  # 删除已合并的分支
+  delete_branch: true
+  # 必须的检查
+  required_checks:
+    - "CI"
+    - "lint"
+  # 必须的审批数
+  required_approvals: 1
+
+# 问题模板配置
+issue_template:
+  # 强制使用模板
+  required: true
+  # 允许空白 Issue
+  allow_blank: false
+
+# 拉取请求配置
+pull_request:
+  # 强制使用模板
+  template_required: true
+  # 最小描述长度
+  min_description_length: 50
+  # 检查项
+  checklist:
+    - "I have read the contributing guidelines"
+    - "I have tested my changes"
+    - "I have updated the documentation"
