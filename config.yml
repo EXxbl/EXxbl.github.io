@@ -30,9 +30,9 @@ close_stale_issues:
 request_review:
   # 是否启用
   enabled: true
-  # 默认 Reviewers
+  # 默认 Reviewers（请替换为实际用户名或团队）
   reviewers:
-    - owner
+    - "your-team-or-user"
   # 最大 Reviewers 数量
   number_of_reviewers: 2
 
@@ -60,8 +60,8 @@ welcome:
     Thank you for your first contribution. We're excited to have you here!
     
     Please make sure to:
-    - Read our [Contributing Guidelines](CONTRIBUTING.md)
-    - Follow our [Code of Conduct](CODE_OF_CONDUCT.md)
+    - Read our [Contributing Guidelines](https://github.com/your-org/your-repo/blob/main/CONTRIBUTING.md)
+    - Follow our [Code of Conduct](https://github.com/your-org/your-repo/blob/main/CODE_OF_CONDUCT.md)
     - Check existing issues before creating new ones
     
     If you have any questions, feel free to ask!
@@ -74,10 +74,10 @@ auto_merge:
   method: squash
   # 删除已合并的分支
   delete_branch: true
-  # 必须的检查
+  # 必须的检查（请确认实际 Checks 名称）
   required_checks:
-    - "CI"
-    - "lint"
+    - "CI / build"
+    - "lint / eslint"
   # 必须的审批数
   required_approvals: 1
 
