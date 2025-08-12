@@ -35,7 +35,7 @@ def get_text():
             'https://lifewillfindaway.top/api/website/getNews',
             params=params,
             headers=headers,
-            verify=False,
+            # verify=False,
         )
         res_json = res.json()
         for data in res_json['data']['data']:
@@ -67,6 +67,7 @@ def send_path(path):
     if not os.path.exists(path):
         os.makedirs(path,exist_ok=True)
     return
+
 if __name__ == "__main__":
     get_text()
     print('success')
