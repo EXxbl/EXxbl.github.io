@@ -7,13 +7,14 @@ from openpyxl.styles.builtins import title
 import config.connect
 from config import *
 
-connect_config = config.connect.Insert_sql(redis_db='github_io',mysql_db='github_io')
+connect_config = config.connect.Insert_sql(redis_db='github_io', mysql_db='github_io')
 
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 
+
 def get_text():
     pageIndex = 0
-    while(connect_config.redis_llen('git_url')):
+    while (connect_config.redis_llen('git_url')):
         pageIndex += 1
         headers = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -46,11 +47,17 @@ def get_text():
             content = data['content']
             send_md(title, content)
 
+
 def send_md(title, content):
     send_path('_posts')
     file_name = f'_posts/{today}-{title}.md'
-    with open(file_name , 'w', encoding='utf-8')as f:
-        first_paragraphs = f'layout: post title: "{title}" description: "{title}" date: {today}'
+    with open(file_name, 'w', encoding='utf-8') as f:
+        first_paragraphs = """---
+layout: post
+post title: "{}" 
+description: "{}" 
+date: {}
+---""".format(title, title, today)
         links = ''
         range_num = connect_config.redis_llen('git_url')
         if range_num >= 5:
@@ -63,10 +70,12 @@ def send_md(title, content):
 
     return
 
+
 def send_path(path):
     if not os.path.exists(path):
-        os.makedirs(path,exist_ok=True)
+        os.makedirs(path, exist_ok=True)
     return
+
 
 if __name__ == "__main__":
     get_text()
