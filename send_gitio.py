@@ -47,8 +47,8 @@ def get_text():
             send_md(title, content)
 
 def send_md(title, content):
-    send_path('./md_files')
-    file_name = f'./md_files/{today}-{title}.md'
+    send_path('_posts')
+    file_name = f'_posts/{today}-{title}.md'
     with open(file_name , 'w', encoding='utf-8')as f:
         first_paragraphs = f'layout: post title: "{title}" description: "{title}" date: {today}'
         links = ''

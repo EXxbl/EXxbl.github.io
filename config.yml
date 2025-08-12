@@ -1,103 +1,50 @@
-      
 title: 体育热搜
 
 description: 更新每日体育新闻
 
 author: exxbl
 
-
 # GitHub Pages 配置
-
 baseurl: ""
-
 url: "https://exxbl.github.io"
 
-
 # 博客设置
-
-# 修改permalink设置，移除日期相关部分
-
-permalink: /posts/:title/
-
-
-# 主题设置
-
-# 使用极简主题或自定义主题
-
-# theme: minima  # 注释掉主题以避免冲突
-
+# 统一 permalink 设置，避免冲突
+permalink: /:title/
 
 # 排除不处理的文件
-
 exclude:
-
   - Gemfile
-
   - Gemfile.lock
-
   - README.md
-
+  - send_gitio.py
+  - config/
 
 # 文章默认布局
-
 defaults:
-
   -
-
     scope:
-
-      path: ""  # 指定应用此默认值的文件
-
-      type: "posts"  # 指定应用默认值的文件类型
-
-    values:
-
-      layout: "post"  # 默认布局为 post
-
-  -
-
-    scope:
-
       path: ""
-
-      type: "pages"
-
+      type: "posts"
     values:
-
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
       layout: "default"
 
-
 # 启用插件
-
 plugins:
-
   - jekyll-feed
-
   - jekyll-seo-tag
-
-
-# 设置时区
-
-timezone: Asia/Shanghai
-
-
-# 生成目录
-
-collections:
-
-  posts:
-
-    output: true
-
-    # 修改permalink设置，移除日期相关部分
-
-    permalink: /:title/
-# 兼容性配置
-gems:
-  - jekyll-feed
   - jekyll-sitemap
 
+# 设置时区
+timezone: Asia/Shanghai
 
-
-
-    
+# 生成目录
+collections:
+  posts:
+    output: true
